@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">NyTimes Books</string>
+
+
+    <!--Common-->
+
+    <!-- Books Acitivity-->
+    <string name="books">Books</string>
+
+
 </resources>

@@ -6,4 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".view.books.BooksActivity">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/BooksAct_Toolbar_ID"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@android:color/background_light" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/BooksAct_RecyclerView_ID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BooksAct_Toolbar_ID" />
 </androidx.constraintlayout.widget.ConstraintLayout>
