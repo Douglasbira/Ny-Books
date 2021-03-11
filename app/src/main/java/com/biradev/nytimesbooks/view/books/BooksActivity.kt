@@ -3,13 +3,20 @@ package com.biradev.nytimesbooks.view.books
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.biradev.nytimesbooks.R
 import com.biradev.nytimesbooks.model.dao.Books
+import com.biradev.nytimesbooks.viewmodel.books.BooksViewModel
 import kotlinx.android.synthetic.main.activity_books.*
 
 class BooksActivity : AppCompatActivity() {
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,16 +24,26 @@ class BooksActivity : AppCompatActivity() {
 
         setToolbar()
 
-        setRecyclerView()
 
+       val view_model = ViewModelProviders.of(this).get(BooksViewModel::class.java)
+
+        view_model.booksLiveData.observe(this, Observer {
+            it?.let { books ->
+                setRecyclerView(books)
+
+
+            }
+        })
+
+        view_model.getBooks()
 
     }
 
-    private fun setRecyclerView() {
+    private fun setRecyclerView(books: List<Books> ) {
         with(BooksAct_RecyclerView_ID){
             layoutManager = LinearLayoutManager(this@BooksActivity,RecyclerView.VERTICAL,false)
             setHasFixedSize(true)
-            adapter = AdapterBooks(getBooks())
+            adapter = AdapterBooks(books)
         }
     }
 
@@ -35,16 +52,7 @@ class BooksActivity : AppCompatActivity() {
         setSupportActionBar(BooksAct_Toolbar_ID)
     }
 
-    fun getBooks(): List<Books>{
-        return listOf(
-            Books("Title 1", "Author 1"),
-            Books("Title 2", "Author 2"),
-            Books("Title 3", "Author 3"),
-            Books("Title 4", "Author 4"),
 
-
-        )
-    }
 
 
 }
