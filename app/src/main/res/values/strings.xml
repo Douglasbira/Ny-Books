@@ -6,6 +6,17 @@
 
     <!-- Books Acitivity-->
     <string name="books">Books</string>
+    <string name="books_erro_401">Não autorizado</string>
+    <string name="books_erro_400">Erro não tradado</string>
+    <string name="books_erro_500">Erro caatastrófico</string>
+
+    <!-- Books Details Acitivity-->
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="details">Details</string>
+
+
+
 
 
 </resources>

@@ -32,7 +32,6 @@ android {
 }
 
 
-
 dependencies {
     //implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -56,11 +55,10 @@ dependencies {
     kapt("com.squareup.moshi:moshi-kotlin-codegen:1.11.0")
 
     //OkHttp
-   // implementation ("com.squareup.okhttp3:okhttp:3.12.12"){
-     //   force = true //API 19 support
+    // implementation ("com.squareup.okhttp3:okhttp:3.12.12"){
+    //   force = true //API 19 support
     //}
-   // implementation 'com.squareup.okhttp3:logging-interceptor:3.12.12'
-
+    // implementation 'com.squareup.okhttp3:logging-interceptor:3.12.12'
 
 
     testImplementation 'junit:junit:4.12'

@@ -9,23 +9,32 @@ import com.biradev.nytimesbooks.model.dao.Books
 import kotlinx.android.synthetic.main.item_books.view.*
 
 
-class AdapterBooks(val books: List<Books>) : RecyclerView.Adapter<AdapterBooks.BooksViewHolder>(){
+class AdapterBooks(
+    val books: List<Books>,
+    val onItemClickListener: ((book: Books) -> Unit)
+) : RecyclerView.Adapter<AdapterBooks.BooksViewHolder>(){
 
 
-    class BooksViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview){
+    class BooksViewHolder(itemview: View, val onItemClickListener: ((book: Books) -> Unit)) : RecyclerView.ViewHolder(itemview){
         private val title = itemview.ItemBooks_TextView_Title_ID
         private val author = itemview.ItemBooks_TextView_Author_ID
 
         fun bindView(books: Books){
             title.text = books.title
             author.text = books.author
+
+
+            itemView.setOnClickListener{
+                onItemClickListener.invoke(books)
+
+            }
         }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, view: Int): BooksViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_books,parent, false)
-        return BooksViewHolder(view)
+        return BooksViewHolder(view,onItemClickListener)
     }
 
     override fun onBindViewHolder(holder: BooksViewHolder, position: Int) {

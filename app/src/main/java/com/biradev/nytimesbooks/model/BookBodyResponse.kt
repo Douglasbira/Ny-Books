@@ -1,5 +1,6 @@
 package com.biradev.nytimesbooks.model
 
+import com.biradev.nytimesbooks.model.dao.Books
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -8,6 +9,9 @@ import com.squareup.moshi.JsonClass
 data class BookBodyResponse (
     @Json(name = "results")
     val bookResults: List<BookResultsResponse>
+
+
+
 
 )
 
@@ -28,5 +32,15 @@ data class BookDetailsResponse (
     @Json(name = "description")
     val description: String
 
-)
+
+
+
+
+){
+    fun getBookModel() = Books(
+        title = this.title,
+        author = this.author,
+        description = this.description
+    )
+}
 

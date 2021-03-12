@@ -7,24 +7,46 @@
     tools:context=".view.books.BooksActivity">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/BooksAct_Toolbar_ID"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+    <include
+        layout="@layout/include_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="@android:color/background_light" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/BooksAct_RecyclerView_ID"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+
+    <ViewFlipper
+        android:id="@+id/BooksAct_ViewFlipper_ID"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BooksAct_Toolbar_ID" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"></ProgressBar>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/BooksAct_RecyclerView_ID"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/BooksAct_TextView_Error_ID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/margin_pattern"
+            android:textSize="16sp">
+
+        </TextView>
+
+    </ViewFlipper>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
