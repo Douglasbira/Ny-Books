@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt' //Codegen
 
 android {
     compileSdkVersion 29
@@ -23,7 +24,14 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
+
+
 
 dependencies {
     //implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -38,6 +46,22 @@ dependencies {
 
     //ViewModelProviders
     implementation 'android.arch.lifecycle:extensions:1.1.1'
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    //Moshi for Json
+    implementation 'com.squareup.retrofit2:converter-moshi:2.4.0'
+    implementation "com.squareup.moshi:moshi:1.11.0"
+    //Codegen of Moshi
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.11.0")
+
+    //OkHttp
+   // implementation ("com.squareup.okhttp3:okhttp:3.12.12"){
+     //   force = true //API 19 support
+    //}
+   // implementation 'com.squareup.okhttp3:logging-interceptor:3.12.12'
+
+
 
     testImplementation 'junit:junit:4.12'
 
